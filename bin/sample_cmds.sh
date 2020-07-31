@@ -152,7 +152,7 @@ sample_tasks() {
 
   # test all OFFSETS with ROC curve
   ./run.py --img "$IMG" --proc detect --channel "$CHL" \
-    --offset ${OFFSETS_DONE[@]} --size $SIZE --roi_profile "$MIC" \
+    --subimg_offset ${OFFSETS_DONE[@]} --subimg_size $SIZE --roi_profile "$MIC" \
     --truth_db "verify" --grid_search gridtest
 
   # view annotation (ie segmentation) truth set

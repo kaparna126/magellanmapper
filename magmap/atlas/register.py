@@ -358,6 +358,11 @@ def register_duo(fixed_img, moving_img, path=None, fixed_mask=None,
         # one transformation for reg, even if 0 iterations
         if not max_iter: continue
         param_map = sitk.GetDefaultParameterMap(params["map_name"])
+        similarity = params["metric_similarity"]
+        if len(param_map["Metric"]) > 1:
+            param_map["Metric"] = [similarity, *param_map["Metric"][1:]]
+        else:
+            param_map["Metric"] = [similarity]
         param_map["MaximumNumberOfIterations"] = [max_iter]
         grid_spacing_sched = params["grid_spacing_schedule"]
         if grid_spacing_sched:
